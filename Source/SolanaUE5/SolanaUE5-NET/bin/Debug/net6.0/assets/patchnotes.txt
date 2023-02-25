@@ -1,7 +1,0 @@
-Welcome to Vivaion!
-
-== Pre-Alpha Launch is here! ==
-3-lane team deathmatch is available for pre-alpha testers!
-Currently inventory, item store and leaderboard are deactivated until later releases
-The solara realm is the only realm available at the moment
-Free-Roam & Battle royale modes are disabled until further into pre-alpha.
