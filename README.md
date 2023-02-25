@@ -1,6 +1,7 @@
 # Unreal Engine 5 Solana Template & Toolkit
 
-This project is currently in development for submission to the Solana Grizzlython. Do NOT fork until after the hackathon is over! Thank you!
+This project is currently in development for submission to the Solana Grizzlython. Come back soon!
+### Do NOT fork until after the hackathon is over! Thank you!
  
 Developing a complete game template and toolkit for building blockchain games on Solana with Unreal Engine 5.
 
