@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Vivaion-NET.props" />
+</Project>

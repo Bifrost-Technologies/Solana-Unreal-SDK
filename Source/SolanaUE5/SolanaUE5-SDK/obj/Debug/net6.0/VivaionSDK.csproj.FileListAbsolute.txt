@@ -1,0 +1,12 @@
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\bin\Debug\net6.0\VivaionSDK.deps.json
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\bin\Debug\net6.0\VivaionSDK.dll
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\bin\Debug\net6.0\VivaionSDK.pdb
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.csproj.AssemblyReference.cache
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.AssemblyInfoInputs.cache
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.AssemblyInfo.cs
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.csproj.CoreCompileInputs.cache
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.dll
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\refint\VivaionSDK.dll
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\VivaionSDK.pdb
+C:\Users\proje\source\repos\Vivaion-NET\VivaionSDK\obj\Debug\net6.0\ref\VivaionSDK.dll

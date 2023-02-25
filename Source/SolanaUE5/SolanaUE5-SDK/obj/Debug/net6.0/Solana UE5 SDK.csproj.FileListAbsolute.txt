@@ -1,0 +1,28 @@
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.deps.json
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.dll
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.pdb
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.csproj.AssemblyReference.cache
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.AssemblyInfoInputs.cache
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.AssemblyInfo.cs
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.csproj.CoreCompileInputs.cache
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.dll
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\refint\Solana UE5 SDK.dll
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.pdb
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\ref\Solana UE5 SDK.dll
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\bin\Debug\net6.0\Solnet.Metaplex.dll
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\bin\Debug\net6.0\Solnet.Metaplex.pdb
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\bin\Debug\net6.0\Solnet.Metaplex.xml
+C:\Users\proje\source\repos\Production\SolanaUE5-NET\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.csproj.CopyComplete
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.deps.json
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.dll
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.pdb
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.csproj.AssemblyReference.cache
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.AssemblyInfoInputs.cache
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.AssemblyInfo.cs
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.csproj.CoreCompileInputs.cache
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.dll
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\refint\Solana UE5 SDK.dll
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\Solana UE5 SDK.pdb
+C:\Users\proje\Documents\Unreal Projects\SolanaGameTemplate\Source\SolanaUE5\SolanaUE5-SDK\obj\Debug\net6.0\ref\Solana UE5 SDK.dll

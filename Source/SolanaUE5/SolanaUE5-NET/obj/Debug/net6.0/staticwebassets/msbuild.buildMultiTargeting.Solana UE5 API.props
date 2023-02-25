@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Solana UE5 API.props" />
+</Project>
