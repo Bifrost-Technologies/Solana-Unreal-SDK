@@ -2,6 +2,9 @@
 
 namespace SolanaUE5.SDK
 {
+    /// <summary>
+    /// Encrypted Login Portal
+    /// </summary>
     public class Portal
     {
         public static async Task RegisterAccount(string username, string gamertag, string email, string password, string sol_address)

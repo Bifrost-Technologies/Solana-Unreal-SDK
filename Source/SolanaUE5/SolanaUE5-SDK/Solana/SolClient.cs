@@ -1,4 +1,5 @@
 ﻿using SolanaUE5.SDK.Database;
+using SolanaUE5.SDK.Solana.NFT;
 using SolanaUE5.SDK.Solana.Store;
 using Solnet.Programs;
 using Solnet.Rpc.Builders;
@@ -15,6 +16,9 @@ namespace SolanaUE5.SDK.Solana
         {
             return await StoreTransactions.BuildStoreTransaction(_gameAccount.SolAddress, _storeItem.StoreItemID, _storeItem.Price);
         }
-        
+        public static async Task<string> GenerateMetaplexTransaction(GameAccount _gameAccount, DigitalCollectible _collectibleItem)
+        {
+            return await MetaplexTransactions.CraftMetaplexToken(new PublicKey(_gameAccount.SolAddress), _collectibleItem);
+        }
     }
 }

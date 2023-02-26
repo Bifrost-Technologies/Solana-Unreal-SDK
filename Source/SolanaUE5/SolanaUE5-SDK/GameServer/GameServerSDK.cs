@@ -3,7 +3,9 @@ using SolanaUE5.SDK.Solana;
 
 namespace SolanaUE5.SDK
 {
-
+    /// <summary>
+    /// GameServer API
+    /// </summary>
     public class GameServer
     {
 
@@ -95,7 +97,12 @@ namespace SolanaUE5.SDK
             StoreItem storeItem = await DatabaseClient.GetStoreItem(itemID);
 
             await SolClient.GenerateStoreTransaction(playerdata, storeItem);
+        }
+        public static async Task RequestRecyclerOperation(string playerID, string InventoryItemID)
+        {
+            GameAccount? playerdata = await DatabaseClient.GetPlayerProfile(playerID);
 
+           // InventoryItem inventoryItem = await DatabaseClient.GetInventoryItem(InventoryItemID);
         }
     }
 }

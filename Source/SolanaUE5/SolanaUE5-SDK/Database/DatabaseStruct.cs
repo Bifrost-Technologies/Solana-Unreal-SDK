@@ -23,6 +23,7 @@
     public struct DBStoreItemColumns
     {
         public const string StoreitemID = "storeitem_id";
+        public const string CollectibleID = "collectible_id";
         public const string GameitemID = "gameitem_id";
         public const string Name = "Name";
         public const string ClassName = "className";
@@ -37,10 +38,18 @@
         public const string MeshClassName = "meshclass";
         public const string ObjectMaterials = "obj_materials";
     }
+    public struct DBCollectibleDataColumns
+    {
+        public const string CollectibleID = "collectible_id";
+        
+    }
     public struct DBTable
     {
         public const string GameAccounts = "bc_accounts";
         public const string StoreItems = "store_items";
         public const string GameItems = "game_items";
+        public const string Inventory = "inventory_items";
+        public const string CollectibleData = "collectible_data";
+        public const string WorldItems = "world_items";
     }
 }

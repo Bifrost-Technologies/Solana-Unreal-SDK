@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using SolanaUE5.SDK;
 using SolanaUE5.SDK.Database;
+using SolanaUE5.SDK.Solana.NFT;
 
 namespace SolanaUE5.Controllers
 {
@@ -55,9 +56,20 @@ namespace SolanaUE5.Controllers
 
         [HttpPost]
         [Route("/store/purchase")]
-        public string RequestStorePurchase([FromBody] RequestStorePurchase purchaseDetails)
+        public async Task<string> RequestStorePurchase([FromBody] RequestStorePurchase purchaseDetails)
         {
-            return "";
+            if (purchaseDetails != null && purchaseDetails.UserToken != null && purchaseDetails.StoreItemID != null)
+            {
+                var playerWallet = await DatabaseClient.GetPlayerProfile(purchaseDetails.UserToken);
+
+                var storeItem = await DatabaseClient.GetStoreItem(purchaseDetails.StoreItemID);
+
+                return "";
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         [HttpGet]

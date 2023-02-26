@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SolanaUE5.SDK.Database
+﻿namespace SolanaUE5.SDK.Database
 {
     public class GameAccount
     {
@@ -55,8 +49,27 @@ namespace SolanaUE5.SDK.Database
             Price = price;
         }
     }
+    public class Inventory : Dictionary<int, InventoryItem>
+    {
+        public Inventory(Dictionary<int, InventoryItem> InventoryItems) 
+        {
+            foreach(var item in InventoryItems)
+            {
+                Add(item.Key, item.Value);
+            }
+        }
+    }
 
-        public class LoginRequest
+    public class InventoryItem 
+    {
+        public string? InventoryItemID { get; set; }
+        public string? WorldItemID { get; set; }
+        public string? GameItemID { get; set; }
+        public int SlotNumber { get; set; }
+        
+    }
+
+    public class LoginRequest
     {
         public string? Username { get; set; }
         public string? Password { get; set; }

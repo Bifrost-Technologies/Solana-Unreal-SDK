@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Reference Include="Solnet.Metaplex">
-      <HintPath>..\..\Solnet.Metaplex\Solnet.Metaplex\bin\Debug\net6.0\Solnet.Metaplex.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\source\repos\Production\Solnet.Metaplex\Solnet.Metaplex\bin\Debug\net6.0\Solnet.Metaplex.dll</HintPath>
     </Reference>
   </ItemGroup>
 

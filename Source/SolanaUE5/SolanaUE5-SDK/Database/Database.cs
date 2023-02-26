@@ -6,11 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql;
 using MySql.Data.MySqlClient;
+using SolanaUE5.SDK.Solana;
+using Solnet.Metaplex.NFT.Library;
+using Solnet.Wallet;
 
 namespace SolanaUE5.SDK.Database
 {
     public static class DatabaseClient
     {
+        
         public static string DatabaseName = "SolanaUE5";
 
         //Development Connection String for the MySQL Database
@@ -60,7 +64,7 @@ namespace SolanaUE5.SDK.Database
         {
             using var db_connection = new MySqlConnection(connection);
             await db_connection.OpenAsync();
-            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.StoreItems) + SQL.WhereMatch(DBGameAccountColumns.AccountID, itemID), db_connection);
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.StoreItems) + SQL.WhereMatch(DBStoreItemColumns.StoreitemID, itemID), db_connection);
             using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
             while (rdr.Read())
             {
@@ -75,6 +79,69 @@ namespace SolanaUE5.SDK.Database
             }
             return null;
         } 
+        public static async Task<Dictionary<string, DigitalCollectible>> GetMetaplexDatabase()
+        {
+
+            var MetaplexCollectibles = new Dictionary<string, DigitalCollectible>();
+            using var db_connection = new MySqlConnection(connection);
+            await db_connection.OpenAsync();
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.CollectibleData), db_connection);
+            using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
+            while (rdr.Read())
+            {
+                DigitalCollectible _DigitalCollectibleData = new DigitalCollectible();
+                _DigitalCollectibleData.CollectibleID = rdr.GetString(0);
+                _DigitalCollectibleData.MintAuthority = new PublicKey(rdr.GetString(1));
+                _DigitalCollectibleData.tokenStandard = (TokenStandard)rdr.GetInt32(2);
+                _DigitalCollectibleData.Metadata = new Metadata
+                {
+                    name = rdr.GetString(3),
+                    symbol = rdr.GetString(4),
+                    uri = rdr.GetString(5),
+                    //You can store several creators in a mysql column but for simplicity we will use one creator (game server)
+                    creators = new List<Creator> { new Creator(new PublicKey(rdr.GetString(6)), 100, true) },
+                    collection = null,
+                    uses = null,
+                    programmableConfig = null
+                    
+                };
+
+                MetaplexCollectibles.Add(_DigitalCollectibleData.CollectibleID, _DigitalCollectibleData);
+            }
+            return MetaplexCollectibles;
+        }
+
+        public static async Task<DigitalCollectible> GetDigitalCollectible(string collectibleID)
+        {
+
+            var MetaplexCollectibles = new Dictionary<string, DigitalCollectible>();
+            using var db_connection = new MySqlConnection(connection);
+            await db_connection.OpenAsync();
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.CollectibleData) + SQL.WhereMatch(DBStoreItemColumns.CollectibleID, collectibleID), db_connection);
+            using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
+            while (rdr.Read())
+            {
+                DigitalCollectible _DigitalCollectibleData = new DigitalCollectible();
+                _DigitalCollectibleData.CollectibleID = rdr.GetString(0);
+                _DigitalCollectibleData.MintAuthority = new PublicKey(rdr.GetString(1));
+                _DigitalCollectibleData.tokenStandard = (TokenStandard)rdr.GetInt32(2);
+                _DigitalCollectibleData.Metadata = new Metadata
+                {
+                    name = rdr.GetString(3),
+                    symbol = rdr.GetString(4),
+                    uri = rdr.GetString(5),
+                    //You can store several creators in a mysql column but for simplicity we will use one creator (game server)
+                    creators = new List<Creator> { new Creator(new PublicKey(rdr.GetString(6)), 100, true) },
+                    collection = null,
+                    uses = null,
+                    programmableConfig = null
+
+                };
+
+                  return _DigitalCollectibleData;
+            }
+            return null;
+        }
         public static async Task<object?> GetPlayerData(string columnName, string player_ID)
         {
             using var db_connection = new MySqlConnection(connection);
