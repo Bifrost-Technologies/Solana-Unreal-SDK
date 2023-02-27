@@ -7,6 +7,8 @@ using System.Net;
 using SolanaUE5.SDK;
 using SolanaUE5.SDK.Database;
 using SolanaUE5.SDK.Solana.NFT;
+using SolanaUE5.SDK.Solana;
+using SolanaUE5.SDK.Errors;
 
 namespace SolanaUE5.Controllers
 {
@@ -17,14 +19,14 @@ namespace SolanaUE5.Controllers
         
         private readonly ILogger<APIController> _logger;
         private IDataProtector _protector { get; set; }
-
+        private GameServer GameServerSDK { get; set; }
         private string[] patchnotes { get; set; }
         public APIController(ILogger<APIController> logger)
         {
             _logger = logger;
-            IDataProtectionProvider provider = DataProtectionProvider.Create("SolanaUE5");
-            _protector = provider.CreateProtector("GateKeeper");
             patchnotes = System.IO.File.ReadAllLines(Directory.GetCurrentDirectory() + "/assets/patchnotes.txt");
+            GameServerSDK = new GameServer();
+            DigitalCollectibles.InitializeMetaplexDatabase();
         }
 
         [HttpPost]
@@ -60,15 +62,25 @@ namespace SolanaUE5.Controllers
         {
             if (purchaseDetails != null && purchaseDetails.UserToken != null && purchaseDetails.StoreItemID != null)
             {
-                var playerWallet = await DatabaseClient.GetPlayerProfile(purchaseDetails.UserToken);
-
-                var storeItem = await DatabaseClient.GetStoreItem(purchaseDetails.StoreItemID);
-
-                return "";
+               return await GameServerSDK.RequestStoreTransaction(_protector.Unprotect(purchaseDetails.UserToken), purchaseDetails.StoreItemID);
             }
             else
             {
-                return string.Empty;
+                return ErrorResponses.BadRequest;
+            }
+        }
+
+        [HttpPost]
+        [Route("/solara/recycler")]
+        public async Task<string> RequestRecyclerOperation([FromBody] RequestRecycler recycleDetails)
+        {
+            if (recycleDetails != null && recycleDetails.UserToken != null && recycleDetails.InventoryItemID != null)
+            {
+                return await GameServerSDK.RequestRecyclerOperation(_protector.Unprotect(recycleDetails.UserToken), recycleDetails.InventoryItemID);
+            }
+            else
+            {
+                return ErrorResponses.BadRequest;
             }
         }
 

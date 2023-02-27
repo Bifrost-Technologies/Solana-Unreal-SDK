@@ -1,5 +1,8 @@
-﻿using SolanaUE5.SDK.Database;
+﻿using Microsoft.AspNetCore.DataProtection;
+using SolanaUE5.SDK.Database;
+using SolanaUE5.SDK.Errors;
 using SolanaUE5.SDK.Solana;
+using SolanaUE5.SDK.Solana.Vault;
 
 namespace SolanaUE5.SDK
 {
@@ -8,19 +11,29 @@ namespace SolanaUE5.SDK
     /// </summary>
     public class GameServer
     {
+        public SolanaVault AuthorityVault { get; set; }
+        public IDataProtector _protector { get; set; }
+
+        public GameServer()
+        {
+            AuthorityVault = new SolanaVault();
+            IDataProtectionProvider provider = DataProtectionProvider.Create("SolanaUE5");
+            _protector = provider.CreateProtector("GateKeeper");
+        }
 
         public static Dictionary<int, int> ExperienceChart = Build_ExperienceChart();
         public static Dictionary<int, int> Build_ExperienceChart()
         {
             int level = 1;
             int snowball_XP = 1000;
-           var _ExperienceChart = new Dictionary<int, int>();
+            var _ExperienceChart = new Dictionary<int, int>();
             while (level <= 50)
             {
                 if (level != 1)
-                    snowball_XP =+ Convert.ToInt32((snowball_XP / 100) * 61.08);
+                    snowball_XP = +Convert.ToInt32((snowball_XP / 100) * 61.08);
 
                 _ExperienceChart.Add(level, snowball_XP);
+                level++;
             }
             return _ExperienceChart;
         }
@@ -91,18 +104,37 @@ namespace SolanaUE5.SDK
         {
             await DatabaseClient.Update_AccountData(player_ID, DBGameAccountColumns.Solarite, amount, DBUpdateType.Subtract);
         }
-        public static async Task RequestStoreTransaction(string playerID, string itemID)
+        public async Task<string> RequestStoreTransaction(string playerID, string itemID)
         {
-            GameAccount? playerdata = await DatabaseClient.GetPlayerProfile(playerID);
-            StoreItem storeItem = await DatabaseClient.GetStoreItem(itemID);
+            GameAccount? playerAccount = await DatabaseClient.GetPlayerProfile(playerID);
+            StoreItem? storeItem = await DatabaseClient.GetStoreItem(itemID);
 
-            await SolClient.GenerateStoreTransaction(playerdata, storeItem);
+            if (playerAccount != null && storeItem != null)
+                return await SolClient.GenerateStoreTransaction(playerAccount, storeItem);
+            else
+                return ErrorResponses.AccountRetrievalError;
         }
-        public static async Task RequestRecyclerOperation(string playerID, string InventoryItemID)
+        public async Task<string> RequestRecyclerOperation(string playerID, string InventoryItemID)
         {
-            GameAccount? playerdata = await DatabaseClient.GetPlayerProfile(playerID);
+            GameAccount? playerAccount = await DatabaseClient.GetPlayerProfile(playerID);
+            InventoryItem? inventoryItem = await DatabaseClient.GetInventoryItem(InventoryItemID);
+            if (playerAccount != null && inventoryItem != null)
+            {
+                GameItem? gameItem = await DatabaseClient.GetGameItem(inventoryItem.GameItemID);
+                if (gameItem != null)
+                {
+                    DigitalCollectible? digitalCollectible = await DatabaseClient.GetDigitalCollectible(gameItem.CollectibleID);
+                    bool playerOwnsItem = await DatabaseClient.CheckInventoryItemOwnership(InventoryItemID);
+                    if (playerOwnsItem)
+                    {
+                        string response = await SolClient.GenerateMetaplexTransaction(this, playerAccount, digitalCollectible);
+                        await DatabaseClient.DeleteInventoryItem(InventoryItemID);
 
-           // InventoryItem inventoryItem = await DatabaseClient.GetInventoryItem(InventoryItemID);
+                        return response;
+                    }
+                }
+            }
+            return ErrorResponses.AccountRetrievalError;
         }
     }
 }

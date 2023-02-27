@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace SolanaUE5.SDK.Solana.Store
 {
-    public struct StoreAddreses
+    public struct StoreAddresses
     {
 
         //Replace this address with a secure point of sale wallet address to process payment transactions

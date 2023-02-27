@@ -1,10 +1,15 @@
-﻿namespace SolanaUE5.SDK.Solana.Vault
+﻿using System;
+using Solnet.Wallet.Utilities;
+using Solnet.Wallet;
+using Solnet.Programs.Utilities;
+
+namespace SolanaUE5.SDK.Solana.Vault
 {
     public class SolanaVault
     {
-        private readonly Dictionary<string, byte[]>? NetworkAuthorityKeys;
+        public readonly Dictionary<string, string>? NetworkAuthorityKeys;
 
-        private readonly byte[]? EncryptedHandshake;
+        public readonly byte[]? EncryptedHandshake;
         public SolanaVault()
         {
             try
@@ -20,8 +25,8 @@
                 {
                     EncryptedHandshake = Convert.FromBase64String(File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "/auth/vault.cypher")));
                     List<string> AuthKeys = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), "/auth/auth.vault")).ToList();
-                    Dictionary<string, byte[]> AuthorityKeys = new();
-                    AuthKeys.ForEach(aKey => AuthorityKeys.Add(aKey.Split('|')[0], Convert.FromBase64String(aKey.Split('|')[1])));
+                    Dictionary<string, string> AuthorityKeys = new();
+                    AuthKeys.ForEach(aKey => AuthorityKeys.Add(aKey.Split('|')[0], aKey.Split('|')[1]));
                     NetworkAuthorityKeys = AuthorityKeys;
                 }
                 else
@@ -37,6 +42,23 @@
             }
 
 
+        }
+        /// <summary>
+        /// Initialize an account with the passed secret key
+        /// </summary>
+        /// <param name="secretKey">The private key.</param>
+        public static Account FromSecretKey(string secretKey)
+        {
+            var B58 = new Base58Encoder();
+            byte[] skeyBytes = B58.DecodeData(secretKey);
+            if (skeyBytes.Length != 64)
+            {
+                throw new ArgumentException("Not a secret key");
+            }
+            byte[] pkeyBytes = skeyBytes.AsSpan(32).ToArray();
+            var acc = new Account(skeyBytes, pkeyBytes);
+
+            return acc;
         }
     }
 }

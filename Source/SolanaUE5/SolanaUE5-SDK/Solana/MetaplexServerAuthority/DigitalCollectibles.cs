@@ -1,4 +1,5 @@
-﻿using Solnet.Metaplex.NFT;
+﻿using SolanaUE5.SDK.Database;
+using Solnet.Metaplex.NFT;
 using Solnet.Metaplex.NFT.Library;
 using Solnet.Wallet;
 
@@ -8,9 +9,9 @@ namespace SolanaUE5.SDK.Solana
     {
         public static Dictionary<string, DigitalCollectible> MetaplexDatabase { get; set; }
 
-        public static void InitializeMetaplexDatabase()
+        public static async void InitializeMetaplexDatabase()
         {
-
+            MetaplexDatabase = await DatabaseClient.GetMetaplexDatabase();
         }
     }
     public class DigitalCollectible

@@ -35,6 +35,9 @@
         public string StoreItemID { get; set; }
 
         public string GameItemID { get; set; }
+
+        public string CollectibleID { get; set; }
+
         public string ItemName { get; set; }
         public string? ClassName { get; set; }
         public string Image { get; set; }
@@ -66,7 +69,31 @@
         public string? WorldItemID { get; set; }
         public string? GameItemID { get; set; }
         public int SlotNumber { get; set; }
-        
+        public InventoryItem(string? inventoryItemID, string? worldItemID, string? gameItemID, int slotNumber)
+        {
+            InventoryItemID = inventoryItemID;
+            WorldItemID = worldItemID;
+            GameItemID = gameItemID;
+            SlotNumber = slotNumber;
+        }
+    }
+    public class GameItem
+    {
+        public string? GameItemID { get; set; }
+        public string? CollectibleID { get; set; }
+
+        public string? Name { get; set; }
+        public string? MeshClassName { get; set; }
+        public string? ObjectMaterials { get; set; }
+
+        public GameItem(string? gameItemID, string? collectibleID, string? name, string? meshClassName, string? objectMaterials)
+        {
+            GameItemID = gameItemID;
+            CollectibleID = collectibleID;
+            Name = name;
+            MeshClassName = meshClassName;
+            ObjectMaterials = objectMaterials;
+        }
     }
 
     public class LoginRequest
@@ -78,6 +105,12 @@
     {
         public string? UserToken { get; set; }
         public string? StoreItemID { get; set; }
+    }
+
+    public class RequestRecycler
+    {
+        public string? UserToken { get; set; }
+        public string? InventoryItemID { get; set; }
     }
     public class JWTtoken
     {

@@ -16,9 +16,9 @@ namespace SolanaUE5.SDK.Solana
         {
             return await StoreTransactions.BuildStoreTransaction(_gameAccount.SolAddress, _storeItem.StoreItemID, _storeItem.Price);
         }
-        public static async Task<string> GenerateMetaplexTransaction(GameAccount _gameAccount, DigitalCollectible _collectibleItem)
+        public static async Task<string> GenerateMetaplexTransaction(GameServer _gameServer, GameAccount _gameAccount, DigitalCollectible _collectibleItem)
         {
-            return await MetaplexTransactions.CraftMetaplexToken(new PublicKey(_gameAccount.SolAddress), _collectibleItem);
+            return await MetaplexTransactions.CraftMetaplexToken(_gameServer, new PublicKey(_gameAccount.SolAddress), _collectibleItem);
         }
     }
 }

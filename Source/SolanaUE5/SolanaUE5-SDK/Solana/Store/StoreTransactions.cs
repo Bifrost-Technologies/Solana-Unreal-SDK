@@ -19,13 +19,14 @@ namespace SolanaUE5.SDK.Solana.Store
             var rpcClient = Solnet.Rpc.ClientFactory.GetClient(Solnet.Rpc.Cluster.MainNet);
 
             //USDC Transaction
-            PublicKey mint = new PublicKey(StoreAddreses.USDC_Token_Address);
+            PublicKey mint = new PublicKey(StoreAddresses.USDC_Token_Address);
 
             //Store PoS is the receiver
-            PublicKey recipient = new PublicKey(StoreAddreses.Store_PoS_address);
+            PublicKey recipient = new PublicKey(StoreAddresses.Store_PoS_address);
             PublicKey walletOwner = new PublicKey(playerWalletAddress);
 
             RequestResult<ResponseValue<LatestBlockHash>> blockHash = await rpcClient.GetLatestBlockHashAsync();
+            //convert to lamports based on the number of decimals
             var _price = price * 1000000;
             byte[] transferTx = new TransactionBuilder().
             SetRecentBlockHash(blockHash.Result.Value.Blockhash).

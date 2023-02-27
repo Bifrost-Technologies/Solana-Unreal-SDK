@@ -15,13 +15,11 @@ namespace SolanaUE5.SDK
         }
         public static async Task<string?> LoginAccount(string username, string password)
         {
-            string loginToken = "";
             string? _playerID = await DatabaseClient.CheckCredentials(username, password);
             if (_playerID != null && _playerID != String.Empty)
             {
                 return _playerID;
             }
-            Console.WriteLine(loginToken);
             return _playerID;
         }
     }

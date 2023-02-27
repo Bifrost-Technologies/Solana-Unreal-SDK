@@ -60,11 +60,11 @@ namespace SolanaUE5.SDK.Database
             }
             return null;
         }
-        public static async Task<StoreItem> GetStoreItem(string itemID)
+        public static async Task<StoreItem> GetStoreItem(string storeitemID)
         {
             using var db_connection = new MySqlConnection(connection);
             await db_connection.OpenAsync();
-            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.StoreItems) + SQL.WhereMatch(DBStoreItemColumns.StoreitemID, itemID), db_connection);
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.StoreItems) + SQL.WhereMatch(DBStoreItemColumns.StoreitemID, storeitemID), db_connection);
             using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
             while (rdr.Read())
             {
@@ -78,7 +78,42 @@ namespace SolanaUE5.SDK.Database
                    );
             }
             return null;
-        } 
+        }
+        public static async Task<GameItem> GetGameItem(string gameitemID)
+        {
+            using var db_connection = new MySqlConnection(connection);
+            await db_connection.OpenAsync();
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.GameItems) + SQL.WhereMatch(DBGameItemColumns.GameitemID, gameitemID), db_connection);
+            using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
+            while (rdr.Read())
+            {
+                return new GameItem(
+                     rdr.GetString(0),
+                     rdr.GetString(1),
+                     rdr.GetString(2),
+                     rdr.GetString(3),
+                     rdr.GetString(4)
+                   );
+            }
+            return null;
+        }
+        public static async Task<InventoryItem> GetInventoryItem(string inventoryitemID)
+        {
+            using var db_connection = new MySqlConnection(connection);
+            await db_connection.OpenAsync();
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.Inventory) + SQL.WhereMatch(DBInventoryItemColumns.InventoryitemID, inventoryitemID), db_connection);
+            using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
+            while (rdr.Read())
+            {
+                return new InventoryItem(
+                     rdr.GetString(0),
+                     rdr.GetString(1),
+                     rdr.GetString(2),
+                     rdr.GetInt32(3)
+                   );
+            }
+            return null;
+        }
         public static async Task<Dictionary<string, DigitalCollectible>> GetMetaplexDatabase()
         {
 
@@ -117,7 +152,7 @@ namespace SolanaUE5.SDK.Database
             var MetaplexCollectibles = new Dictionary<string, DigitalCollectible>();
             using var db_connection = new MySqlConnection(connection);
             await db_connection.OpenAsync();
-            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.CollectibleData) + SQL.WhereMatch(DBStoreItemColumns.CollectibleID, collectibleID), db_connection);
+            using var get_cmd = new MySqlCommand(SQL.GetRowQuery(DatabaseName, DBTable.CollectibleData) + SQL.WhereMatch(DBCollectibleDataColumns.CollectibleID, collectibleID), db_connection);
             using MySqlDataReader rdr = (MySqlDataReader)await get_cmd.ExecuteReaderAsync();
             while (rdr.Read())
             {
@@ -220,6 +255,16 @@ namespace SolanaUE5.SDK.Database
             await cmd.PrepareAsync();
             await cmd.ExecuteNonQueryAsync();
             Debug.WriteLine(column_name + " has been updated for " + target_accID);
+        }
+
+        internal static Task<bool> CheckInventoryItemOwnership(string inventoryItemID)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static Task DeleteInventoryItem(string inventoryItemID)
+        {
+            throw new NotImplementedException();
         }
     }
 
