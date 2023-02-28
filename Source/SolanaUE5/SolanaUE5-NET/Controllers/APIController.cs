@@ -1,14 +1,11 @@
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
 using SolanaUE5.SDK;
 using SolanaUE5.SDK.Database;
-using SolanaUE5.SDK.Solana.NFT;
-using SolanaUE5.SDK.Solana;
 using SolanaUE5.SDK.Errors;
+using SolanaUE5.SDK.Solana;
+using System.Diagnostics;
 
 namespace SolanaUE5.Controllers
 {
@@ -16,7 +13,7 @@ namespace SolanaUE5.Controllers
     [Route("[controller]")]
     public class APIController : ControllerBase
     {
-        
+
         private readonly ILogger<APIController> _logger;
         private IDataProtector _protector { get; set; }
         private GameServer GameServerSDK { get; set; }
@@ -35,17 +32,19 @@ namespace SolanaUE5.Controllers
         {
             Console.WriteLine("Login request pinged!");
             string login_key = String.Empty;
-
-            string? trade_id = await Portal.LoginAccount(login.Username, login.Password);
-            Console.WriteLine("Login Found: " + trade_id);
-
-            if (trade_id == null || trade_id == String.Empty)
+            if (login != null && login.Username != null && login.Password != null)
             {
-                login_key = "ERROR: Incorrect login information";
+                string? trade_id = await Portal.LoginAccount(login.Username, login.Password);
+                Console.WriteLine("Login Found: " + trade_id);
+
+                if (trade_id == null || trade_id == String.Empty)
+                    login_key = "ERROR: Incorrect login information";
+                else
+                    login_key = _protector.Protect(trade_id);
             }
             else
             {
-                login_key = _protector.Protect(trade_id);
+                login_key = "ERROR: Incorrect login information";
             }
 
             Console.WriteLine($"{login_key}");
@@ -61,13 +60,9 @@ namespace SolanaUE5.Controllers
         public async Task<string> RequestStorePurchase([FromBody] RequestStorePurchase purchaseDetails)
         {
             if (purchaseDetails != null && purchaseDetails.UserToken != null && purchaseDetails.StoreItemID != null)
-            {
-               return await GameServerSDK.RequestStoreTransaction(_protector.Unprotect(purchaseDetails.UserToken), purchaseDetails.StoreItemID);
-            }
+                return await GameServerSDK.RequestStoreTransaction(_protector.Unprotect(purchaseDetails.UserToken), purchaseDetails.StoreItemID);
             else
-            {
                 return ErrorResponses.BadRequest;
-            }
         }
 
         [HttpPost]
@@ -75,45 +70,51 @@ namespace SolanaUE5.Controllers
         public async Task<string> RequestRecyclerOperation([FromBody] RequestRecycler recycleDetails)
         {
             if (recycleDetails != null && recycleDetails.UserToken != null && recycleDetails.InventoryItemID != null)
-            {
                 return await GameServerSDK.RequestRecyclerOperation(_protector.Unprotect(recycleDetails.UserToken), recycleDetails.InventoryItemID);
+            else
+                return ErrorResponses.BadRequest;
+        }
+
+        [HttpGet]
+        [Route("/getPatchNotes")]
+        public string GetPatchNotes()
+        {
+            Console.WriteLine("Patch notes retrieved!");
+            
+            return string.Join(Environment.NewLine, patchnotes);
+
+        }
+        [HttpGet]
+        [Route("/getGameVersion")]
+        public string GetGameVersion()
+        {
+            Console.WriteLine("Game version retrieved!");
+            return "1.0";
+        }
+        [HttpPost]
+        [Route("/getProfile")]
+        public async Task<string> GetUserProfile([FromBody] JWTtoken _token)
+        {
+            Debug.WriteLine("Server Reached!");
+            Console.WriteLine("server reached!");
+            if (_token != null)
+            {
+
+
+                var decrypted_token = _protector.Unprotect(_token.Token);
+                Debug.WriteLine("Decrypted Token:" + decrypted_token);
+
+                var userdata = await DatabaseClient.GetPlayerProfile(decrypted_token);
+
+                var user = JsonConvert.SerializeObject(userdata);
+                Debug.WriteLine("Json Profile: " + user);
+                return user;
             }
             else
             {
                 return ErrorResponses.BadRequest;
             }
-        }
-
-        [HttpGet]
-        [Route("/getPatchNotes")]
-        public async Task<string> GetPatchNotes()
-        {
-            await Task.Delay(10);
-            return string.Join(Environment.NewLine, patchnotes);
            
-        }
-        [HttpGet]
-        [Route("/getGameVersion")]
-        public async Task<string> GetGameVersion()
-        {
-            Console.WriteLine("Game version retrieved!");
-            await Task.Delay(10);
-            return "1.0";
-        }
-        [HttpPost]
-        [Route("/getProfile")]
-        public async Task<string> GetUserProfile([FromBody]JWTtoken _token)
-        {
-            Debug.WriteLine("Server Reached!");
-            Console.WriteLine("server reached!");
-            var decrypted_token = _protector.Unprotect(_token.Token);
-            Debug.WriteLine("Decrypted Token:" + decrypted_token);
-
-            var userdata = await DatabaseClient.GetPlayerProfile(decrypted_token);
-
-            var user = JsonConvert.SerializeObject(userdata);
-            Debug.WriteLine("Json Profile: "+user);
-            return user;
         }
 
     }
