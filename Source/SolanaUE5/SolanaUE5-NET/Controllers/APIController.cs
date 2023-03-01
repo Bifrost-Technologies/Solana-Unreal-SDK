@@ -53,7 +53,15 @@ namespace SolanaUE5.Controllers
             return response;
         }
 
-
+        [HttpPost]
+        [Route("/store/mintpurchase")]
+        public async Task<string> RequestStoreMintPurchase([FromBody] RequestStorePurchase mintpurchaseDetails)
+        {
+            if (mintpurchaseDetails != null && mintpurchaseDetails.UserToken != null && mintpurchaseDetails.StoreItemID != null)
+                return await GameServerSDK.RequestStoreMintTransaction(_protector.Unprotect(mintpurchaseDetails.UserToken), mintpurchaseDetails.StoreItemID);
+            else
+                return ErrorResponses.BadRequest;
+        }
 
         [HttpPost]
         [Route("/store/purchase")]

@@ -62,14 +62,11 @@ namespace SolanaUE5.SDK
                     await DatabaseClient.Update_AccountData(player_ID, DBGameAccountColumns.Experience, rolloverXP, DBUpdateType.Add);
                 }
                 else
-                {
                     await DatabaseClient.Update_AccountData(player_ID, DBGameAccountColumns.Experience, amount, DBUpdateType.Add);
-                }
             }
             else
-            {
                 Console.WriteLine("Account Retrieval failed! Failed to update EXP");
-            }
+            
         }
         public static async Task Earn_SeasonExperience(string player_ID, int amount)
         {
@@ -86,9 +83,7 @@ namespace SolanaUE5.SDK
                     await DatabaseClient.Update_AccountData(player_ID, DBGameAccountColumns.SeasonExperience, rolloverXP, DBUpdateType.Add);
                 }
                 else
-                {
                     await DatabaseClient.Update_AccountData(player_ID, DBGameAccountColumns.SeasonExperience, amount, DBUpdateType.Add);
-                }
             }
             else
             {
@@ -111,6 +106,16 @@ namespace SolanaUE5.SDK
 
             if (playerAccount != null && storeItem != null)
                 return await SolClient.GenerateStoreTransaction(playerAccount, storeItem);
+            else
+                return ErrorResponses.AccountRetrievalError;
+        }
+        public async Task<string> RequestStoreMintTransaction(string playerID, string itemID)
+        {
+            GameAccount? playerAccount = await DatabaseClient.GetPlayerProfile(playerID);
+            StoreItem? storeItem = await DatabaseClient.GetStoreItem(itemID);
+
+            if (playerAccount != null && storeItem != null)
+                return await SolClient.GenerateStoreMintTransaction(this, playerAccount, storeItem);
             else
                 return ErrorResponses.AccountRetrievalError;
         }

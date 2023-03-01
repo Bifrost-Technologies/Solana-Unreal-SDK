@@ -1,4 +1,5 @@
-﻿using Solnet.Programs;
+﻿using SolanaUE5.SDK.Solana.NFT;
+using Solnet.Programs;
 using Solnet.Rpc.Builders;
 using Solnet.Rpc.Core.Http;
 using Solnet.Rpc.Messages;
@@ -36,6 +37,10 @@ namespace SolanaUE5.SDK.Solana.Store
             CompileMessage();
 
             return Convert.ToBase64String(transferTx);
+        }
+        public static async Task<string> CraftandSignStoreMintTransaction(GameServer gameServer, decimal USDCprice, PublicKey playerAddress, DigitalCollectible digitalCollectible)
+        {
+            return await MetaplexTransactions.CraftMetaplexTokenPurchaseTransaction(gameServer, USDCprice, playerAddress, digitalCollectible);
         }
     }
 }
