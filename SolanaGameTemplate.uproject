@@ -50,6 +50,10 @@
 				"Android",
 				"HoloLens"
 			]
+		},
+		{
+			"Name": "UnrealCLR",
+			"Enabled": false
 		}
 	]
 }
