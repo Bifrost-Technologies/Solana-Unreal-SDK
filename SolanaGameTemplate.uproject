@@ -54,6 +54,14 @@
 		{
 			"Name": "UnrealCLR",
 			"Enabled": false
+		},
+		{
+			"Name": "WebBrowserWidget",
+			"Enabled": true
+		},
+		{
+			"Name": "WebBrowserNativeProxy",
+			"Enabled": true
 		}
 	]
 }
