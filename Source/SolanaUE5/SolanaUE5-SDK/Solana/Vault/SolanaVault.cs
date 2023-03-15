@@ -43,10 +43,6 @@ namespace SolanaUE5.SDK.Solana.Vault
 
 
         }
-        /// <summary>
-        /// Initialize an account with the passed secret key
-        /// </summary>
-        /// <param name="secretKey">The private key.</param>
         public static Account FromSecretKey(string secretKey)
         {
             var B58 = new Base58Encoder();

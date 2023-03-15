@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MySql;
@@ -185,10 +186,12 @@ namespace SolanaUE5.SDK.Database
             return await get_cmd.ExecuteScalarAsync();
         }
         public static async Task<string?> CheckCredentials(string username, string password)
-        {
+        {           
+            var sha512 = SHA512.Create();
+            var HASHED_PW = Convert.ToBase64String(sha512.ComputeHash(Encoding.UTF8.GetBytes(password)));
             using var db_connection = new MySqlConnection(connection);
             await db_connection.OpenAsync();
-            using var get_cmd = new MySqlCommand(SQL.SelectQuery(DatabaseName, DBTable.GameAccounts, DBGameAccountColumns.AccountID) + SQL.WhereUserPW(username, password), db_connection);
+            using var get_cmd = new MySqlCommand(SQL.SelectQuery(DatabaseName, DBTable.GameAccounts, DBGameAccountColumns.AccountID) + SQL.WhereUserPW(username, HASHED_PW), db_connection);
             var _player_ID = await get_cmd.ExecuteScalarAsync();
 
             if (_player_ID != null)

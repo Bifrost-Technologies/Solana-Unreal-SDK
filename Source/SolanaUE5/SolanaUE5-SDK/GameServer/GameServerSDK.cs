@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
 using SolanaUE5.SDK.Database;
 using SolanaUE5.SDK.Errors;
+using SolanaUE5.SDK.Security;
 using SolanaUE5.SDK.Solana;
 using SolanaUE5.SDK.Solana.Vault;
 
@@ -12,13 +13,14 @@ namespace SolanaUE5.SDK
     public class GameServer
     {
         public SolanaVault AuthorityVault { get; set; }
-        public IDataProtector _protector { get; set; }
+        public NetworkSecurity NetworkSecurity { get; set; }
 
         public GameServer()
         {
             AuthorityVault = new SolanaVault();
-            IDataProtectionProvider provider = DataProtectionProvider.Create("SolanaUE5");
-            _protector = provider.CreateProtector("GateKeeper");
+            NetworkSecurity = new NetworkSecurity();
+            NetworkSecurity.InitializeNetworkVault();
+            NetworkSecurity.ActivateTitan();
         }
 
         public static Dictionary<int, int> ExperienceChart = Build_ExperienceChart();
@@ -123,10 +125,10 @@ namespace SolanaUE5.SDK
         {
             GameAccount? playerAccount = await DatabaseClient.GetPlayerProfile(playerID);
             InventoryItem? inventoryItem = await DatabaseClient.GetInventoryItem(InventoryItemID);
-            if (playerAccount != null && inventoryItem != null)
+            if (playerAccount != null && inventoryItem != null && inventoryItem.GameItemID != null)
             {
                 GameItem? gameItem = await DatabaseClient.GetGameItem(inventoryItem.GameItemID);
-                if (gameItem != null)
+                if (gameItem != null && gameItem.CollectibleID != null)
                 {
                     DigitalCollectible? digitalCollectible = await DatabaseClient.GetDigitalCollectible(gameItem.CollectibleID);
                     bool playerOwnsItem = await DatabaseClient.CheckInventoryItemOwnership(InventoryItemID);

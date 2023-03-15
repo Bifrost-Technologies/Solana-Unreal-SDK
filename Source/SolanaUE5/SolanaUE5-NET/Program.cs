@@ -29,13 +29,6 @@ builder.Services.AddHsts(options =>
 builder.Services.Configure<KestrelServerOptions>(options =>
 { 
     options.Listen(IPAddress.Loopback, 5073);
-    options.Listen(IPAddress.Loopback, 7073, listenOptions =>
-    {
-
-        listenOptions.UseHttps(@"C:\Certs\api.pfx", "$olanaUE5");
-
-    });
-
 });
 
 builder.Services.AddControllers();
