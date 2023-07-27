@@ -16,10 +16,4 @@
     <ProjectReference Include="..\SolanaUE5-SDK\Solana UE5 SDK.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Solana UE5 SDK">
-      <HintPath>..\SolanaUE5-SDK\bin\Debug\net6.0\Solana UE5 SDK.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

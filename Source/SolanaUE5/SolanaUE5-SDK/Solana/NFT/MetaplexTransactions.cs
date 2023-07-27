@@ -27,7 +27,7 @@ namespace SolanaUE5.SDK.Solana.NFT
             string? encryptedKey = _gameServer.AuthorityVault.NetworkAuthorityKeys[AuthorityKeyNames.GameItemCreationAuthority];
             if (encryptedKey != null)
             {
-                Account GameItemCreationAuthorityAccount = SolanaVault.FromSecretKey(_gameServer._protector.Unprotect(encryptedKey));
+                Account GameItemCreationAuthorityAccount = SolanaVault.FromSecretKey(_gameServer.NetworkSecurity.Titan.Unprotect(encryptedKey));
 
                 return (await client.CreateNFT(GameItemCreationAuthorityAccount, freshMint, TokenStandard.FungibleAsset, digitalCollectible.Metadata, false, true)).Result;
             }
@@ -43,7 +43,7 @@ namespace SolanaUE5.SDK.Solana.NFT
                 string? encryptedKey = _gameServer.AuthorityVault.NetworkAuthorityKeys[AuthorityKeyNames.GameItemCreationAuthority];
                 if (encryptedKey != null)
                 {
-                    Account GameItemCreationAuthorityAccount = SolanaVault.FromSecretKey(_gameServer._protector.Unprotect(encryptedKey));
+                    Account GameItemCreationAuthorityAccount = SolanaVault.FromSecretKey(_gameServer.NetworkSecurity.Titan.Unprotect(encryptedKey));
                     byte[] transactionMessage = (await CraftNFTpurchaseTransaction(playerWalletAddress, USDCprice, GameItemCreationAuthorityAccount, freshMint, TokenStandard.FungibleAsset, digitalCollectible.Metadata, false, true));
                     //We build a light weight packet using break symbol as our discriminator character
                     //First position in the array is the transaction message. Anything after it is a signature or multiple signatures.
