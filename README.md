@@ -1,4 +1,4 @@
-# Solana Unreal Engine 5 SDK
+# Solana Unreal SDK
 
 
 ![solanaue5-bifrost](https://github.com/Bifrost-Technologies/Solana-UnrealEngine5-SDK/assets/24855008/f292c889-3f0e-44d6-96d4-f4ac0e2d5c2c)
