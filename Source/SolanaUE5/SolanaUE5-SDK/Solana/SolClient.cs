@@ -1,6 +1,6 @@
-﻿using SolanaUE5.SDK.Database;
-using SolanaUE5.SDK.Solana.NFT;
-using SolanaUE5.SDK.Solana.Store;
+﻿using UnrealSolana.SDK.Database;
+using UnrealSolana.SDK.Solana.NFT;
+using UnrealSolana.SDK.Solana.Store;
 using Solnet.Programs;
 using Solnet.Rpc.Builders;
 using Solnet.Rpc.Core.Http;
@@ -8,7 +8,7 @@ using Solnet.Rpc.Messages;
 using Solnet.Rpc.Models;
 using Solnet.Wallet;
 
-namespace SolanaUE5.SDK.Solana
+namespace UnrealSolana.SDK.Solana
 {
     public static class SolClient
     {

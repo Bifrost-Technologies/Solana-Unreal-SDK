@@ -1,4 +1,4 @@
-﻿namespace SolanaUE5.SDK.Errors
+﻿namespace UnrealSolana.SDK.Errors
 {
     public struct ErrorResponses
     {

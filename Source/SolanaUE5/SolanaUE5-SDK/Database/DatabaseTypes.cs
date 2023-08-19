@@ -1,4 +1,4 @@
-﻿namespace SolanaUE5.SDK.Database
+﻿namespace UnrealSolana.SDK.Database
 {
     public class GameAccount
     {

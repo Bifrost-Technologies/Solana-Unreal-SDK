@@ -7,16 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql;
 using MySql.Data.MySqlClient;
-using SolanaUE5.SDK.Solana;
+using UnrealSolana.SDK.Solana;
 using Solnet.Metaplex.NFT.Library;
 using Solnet.Wallet;
 
-namespace SolanaUE5.SDK.Database
+namespace UnrealSolana.SDK.Database
 {
     public static class DatabaseClient
     {
         
-        public static string DatabaseName = "SolanaUE5";
+        public static string DatabaseName = "UnrealSolana";
 
         //Development Connection String for the MySQL Database
         public const string connection = @"server=localhost;userid=root;password=$olanaGame;database=SolanaGameDatabase";

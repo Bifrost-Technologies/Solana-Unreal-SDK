@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
-using SolanaUE5.SDK.Errors;
-using SolanaUE5.SDK.Solana.Store;
-using SolanaUE5.SDK.Solana.Vault;
+using UnrealSolana.SDK.Errors;
+using UnrealSolana.SDK.Solana.Store;
+using UnrealSolana.SDK.Solana.Vault;
 using Solnet.Metaplex.NFT;
 using Solnet.Metaplex.NFT.Library;
 using Solnet.Metaplex.Utilities;
@@ -13,7 +13,7 @@ using Solnet.Rpc.Messages;
 using Solnet.Rpc.Models;
 using Solnet.Wallet;
 
-namespace SolanaUE5.SDK.Solana.NFT
+namespace UnrealSolana.SDK.Solana.NFT
 {
 
     public class MetaplexTransactions

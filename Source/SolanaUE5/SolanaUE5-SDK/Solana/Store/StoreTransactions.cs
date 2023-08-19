@@ -1,4 +1,4 @@
-﻿using SolanaUE5.SDK.Solana.NFT;
+﻿using UnrealSolana.SDK.Solana.NFT;
 using Solnet.Programs;
 using Solnet.Rpc.Builders;
 using Solnet.Rpc.Core.Http;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolanaUE5.SDK.Solana.Store
+namespace UnrealSolana.SDK.Solana.Store
 {
     public class StoreTransactions
     {

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolanaUE5.SDK.Database
+namespace UnrealSolana.SDK.Database
 {
     public static class SQL
     {
-        public const string InsertNewBCAccount = "INSERT INTO `SolanaUE5`.`bc_accounts` (`acc_id`,`username`,`password`,`email`,'gamertag',`sol_address`,`account_level`,'experience','season_level','season_exp',`gold`,`solarite`) VALUES (@acc_id, @username, @password, @email, @gamertag, @sol_address, @account_level, @exp, @season_level, @season_exp, @gold, @solarite); ";
+        public const string InsertNewBCAccount = "INSERT INTO `UnrealSolana`.`bc_accounts` (`acc_id`,`username`,`password`,`email`,'gamertag',`sol_address`,`account_level`,'experience','season_level','season_exp',`gold`,`solarite`) VALUES (@acc_id, @username, @password, @email, @gamertag, @sol_address, @account_level, @exp, @season_level, @season_exp, @gold, @solarite); ";
        
         public static string SelectQuery(string _databaseName, string _tableName, string _columnName)
         {

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolanaUE5.SDK.Security
+namespace UnrealSolana.SDK.Security
 {
     public sealed class NetworkSecurity
     {
@@ -20,7 +20,7 @@ namespace SolanaUE5.SDK.Security
         }
         public void ActivateTitan()
         {
-            IDataProtectionProvider provider = DataProtectionProvider.Create("SolanaUE5");
+            IDataProtectionProvider provider = DataProtectionProvider.Create("UnrealSolana");
             Titan = provider.CreateProtector("GateKeeper");
         }
       

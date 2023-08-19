@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.DataProtection;
-using SolanaUE5.SDK.Database;
-using SolanaUE5.SDK.Errors;
-using SolanaUE5.SDK.Security;
-using SolanaUE5.SDK.Solana;
-using SolanaUE5.SDK.Solana.Vault;
+using UnrealSolana.SDK.Database;
+using UnrealSolana.SDK.Errors;
+using UnrealSolana.SDK.Security;
+using UnrealSolana.SDK.Solana;
+using UnrealSolana.SDK.Solana.Vault;
 
-namespace SolanaUE5.SDK
+namespace UnrealSolana.SDK
 {
     /// <summary>
     /// GameServer API

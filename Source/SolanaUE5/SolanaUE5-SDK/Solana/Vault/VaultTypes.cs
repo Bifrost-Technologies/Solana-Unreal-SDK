@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolanaUE5.SDK.Solana.Vault
+namespace UnrealSolana.SDK.Solana.Vault
 {
     public struct AuthorityKeyNames
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace SolanaUE5.SDK.Solana.Store
+namespace UnrealSolana.SDK.Solana.Store
 {
     public struct StoreAddresses
     {

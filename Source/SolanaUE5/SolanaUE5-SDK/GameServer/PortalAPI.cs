@@ -1,10 +1,10 @@
 ﻿using Chaos.NaCl;
 using MySqlX.XDevAPI.Common;
-using SolanaUE5.SDK.Database;
+using UnrealSolana.SDK.Database;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace SolanaUE5.SDK
+namespace UnrealSolana.SDK
 {
     /// <summary>
     /// Encrypted Login Portal

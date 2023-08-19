@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "SolanaUE5_SDK": {
+    "UnrealSolana_SDK": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

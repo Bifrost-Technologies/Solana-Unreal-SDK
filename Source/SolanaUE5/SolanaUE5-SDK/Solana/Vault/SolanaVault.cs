@@ -3,7 +3,7 @@ using Solnet.Wallet.Utilities;
 using Solnet.Wallet;
 using Solnet.Programs.Utilities;
 
-namespace SolanaUE5.SDK.Solana.Vault
+namespace UnrealSolana.SDK.Solana.Vault
 {
     public class SolanaVault
     {

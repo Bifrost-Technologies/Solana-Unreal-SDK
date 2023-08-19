@@ -1,9 +1,9 @@
-﻿using SolanaUE5.SDK.Database;
+﻿using UnrealSolana.SDK.Database;
 using Solnet.Metaplex.NFT;
 using Solnet.Metaplex.NFT.Library;
 using Solnet.Wallet;
 
-namespace SolanaUE5.SDK.Solana
+namespace UnrealSolana.SDK.Solana
 {
     public class DigitalCollectibles
     {
