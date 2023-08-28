@@ -1,6 +1,8 @@
 /*
- *  Unreal Engine .NET 6 integration 
- *  Copyright (c) 2021 Stanislav Denisov
+ *  UnrealSOLNET
+ *  Copyright (c) 2023 Bifrost Inc.
+ *  Author: Nathan Martell
+ *  Forked from: Stanislav Denisov's UnrealCLR
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +27,8 @@ using System;
 using System.IO;
 using UnrealBuildTool;
 
-public class SolanaSOLNET : ModuleRules {
-	public SolanaSOLNET(ReadOnlyTargetRules Target) : base(Target) {
+public class UnrealSOLNET : ModuleRules {
+	public UnrealSOLNET(ReadOnlyTargetRules Target) : base(Target) {
 		#if UE_4_24_OR_LATER
 			bLegacyPublicIncludePaths = false;
 			DefaultBuildSettings = BuildSettingsVersion.V2;
@@ -83,7 +85,7 @@ public class SolanaSOLNET : ModuleRules {
 				RuntimeDependencies.Add(file);
 			}
 
-			string userAssemblies = Path.Combine(PluginDirectory , "../../Managed");
+			string userAssemblies = Path.Combine(PluginDirectory , "/SolanaKit");
 
 			if (Directory.Exists(userAssemblies)) {
 				files = Directory.GetFiles(userAssemblies, "*.*", SearchOption.AllDirectories);

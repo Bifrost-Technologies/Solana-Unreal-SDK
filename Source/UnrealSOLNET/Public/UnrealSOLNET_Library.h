@@ -1,6 +1,8 @@
 /*
- *  Unreal Engine .NET 6 integration 
- *  Copyright (c) 2021 Stanislav Denisov
+ *  UnrealSOLNET
+ *  Copyright (c) 2023 Bifrost Inc.
+ *  Author: Nathan Martell
+ *  Forked from: Stanislav Denisov's UnrealCLR
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +22,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+
 
 #pragma once
 

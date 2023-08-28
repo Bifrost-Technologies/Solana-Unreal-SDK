@@ -1,6 +1,8 @@
 /*
- *  Unreal Engine .NET 6 integration
- *  Copyright (c) 2021 Stanislav Denisov
+ *  UnrealSOLNET
+ *  Copyright (c) 2023 Bifrost Inc.
+ *  Author: Nathan Martell
+ *  Forked from: Stanislav Denisov's UnrealCLR
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +22,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
+
 
 #include "UnrealSOLNET.h"
 
@@ -48,7 +51,7 @@ void UnrealSOLNET::Module::StartupModule() {
 
 	UnrealSOLNET::Status = UnrealSOLNET::StatusType::Stopped;
 	UnrealSOLNET::ProjectPath = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir());
-	UnrealSOLNET::UserAssembliesPath = UnrealSOLNET::ProjectPath + TEXT("Managed/");
+	UnrealSOLNET::UserAssembliesPath = UnrealSOLNET::ProjectPath + TEXT("Plugins/Solana SDK/SolanaKit/");
 
 	OnWorldPostInitializationHandle = FWorldDelegates::OnPostWorldInitialization.AddRaw(this, &UnrealSOLNET::Module::OnWorldPostInitialization);
 	OnWorldCleanupHandle = FWorldDelegates::OnWorldCleanup.AddRaw(this, &UnrealSOLNET::Module::OnWorldCleanup);
