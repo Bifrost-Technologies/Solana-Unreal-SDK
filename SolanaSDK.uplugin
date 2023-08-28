@@ -1,0 +1,38 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "SolanaSDK",
+	"Description": "Solana SDK for Unreal Engine 5",
+	"Category": "Scripting",
+	"CreatedBy": "BifrostTitan, Bifrost Inc",
+	"CreatedByURL": "https://github.com/Bifrost-Technologies/Solana-Unreal-SDK",
+	"DocsURL": "https://github.com/Bifrost-Technologies/Solana-Unreal-SDK",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/Bifrost-Technologies/Solana-Unreal-SDK",
+	"EnabledByDefault": true,
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "UnrealSOLNET",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Linux",
+				"Mac"
+			]
+		},
+		{
+			"Name": "SolanaGameTemplate",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	]
+}
