@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <LangVersion>10.0</LangVersion>
+    <RootNamespace>UnrealSolana.SDK</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Chaos.NaCl.Standard" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="7.0.0" />
+    <PackageReference Include="MySql.Data" Version="8.1.0" />
+    <PackageReference Include="System.Interactive" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Solnet.Extensions">
+      <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Solnet.KeyStore">
+      <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.KeyStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Solnet.Metaplex">
+      <HintPath>..\..\..\..\Production\Solnet.Metaplex\Solnet.Metaplex\bin\Release\net6.0\Solnet.Metaplex.dll</HintPath>
+    </Reference>
+    <Reference Include="Solnet.Programs">
+      <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Programs.dll</HintPath>
+    </Reference>
+    <Reference Include="Solnet.Rpc">
+      <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Rpc.dll</HintPath>
+    </Reference>
+    <Reference Include="Solnet.Wallet">
+      <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Wallet.dll</HintPath>
+    </Reference>
+    <Reference Include="UnrealEngine.Framework">
+      <HintPath>D:\Unreal Projects\Frontiers\Managed\UnrealEngine.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

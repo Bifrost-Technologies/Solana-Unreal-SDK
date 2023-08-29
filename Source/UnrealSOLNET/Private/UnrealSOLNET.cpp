@@ -37,13 +37,13 @@ void UnrealSOLNET::Module::StartupModule() {
 	#define HOSTFXR_LINUX "libhostfxr.so"
 
 	#ifdef UNREALSOLNET_WINDOWS
-		#define HOSTFXR_PATH "Plugins/Solana SDK/Runtime/Win64/host/fxr/" HOSTFXR_VERSION "/" HOSTFXR_WINDOWS
+		#define HOSTFXR_PATH "Plugins/Solana SDK/Source/ThirdParty/Runtime/Win64/host/fxr/" HOSTFXR_VERSION "/" HOSTFXR_WINDOWS
 		#define UNREALSOLNET_PLATFORM_STRING(string) string
 	#elif defined(UNREALSOLNET_MAC)
-		#define HOSTFXR_PATH "Plugins/Solana SDK/Runtime/Mac/host/fxr/" HOSTFXR_VERSION "/" HOSTFXR_MAC
+		#define HOSTFXR_PATH "Plugins/Solana SDK/Source/ThirdParty/Runtime/Mac/host/fxr/" HOSTFXR_VERSION "/" HOSTFXR_MAC
 		#define UNREALSOLNET_PLATFORM_STRING(string) TCHAR_TO_ANSI(string)
 	#elif defined(UNREALSOLNET_UNIX)
-		#define HOSTFXR_PATH "Plugins/Solana SDK/Runtime/Linux/host/fxr/" HOSTFXR_VERSION "/" HOSTFXR_LINUX
+		#define HOSTFXR_PATH "Plugins/Solana SDK/Source/ThirdParty/Runtime/Linux/host/fxr/" HOSTFXR_VERSION "/" HOSTFXR_LINUX
 		#define UNREALSOLNET_PLATFORM_STRING(string) TCHAR_TO_ANSI(string)
 	#else
 		#error "Unknown platform"

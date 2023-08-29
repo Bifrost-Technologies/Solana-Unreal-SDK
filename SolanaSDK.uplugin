@@ -1,6 +1,7 @@
 {
-	"FileVersion": 3,
+	"FileVersion": 1,
 	"Version": 1,
+	"EngineVersion": "5.2",
 	"VersionName": "1.0",
 	"FriendlyName": "SolanaSDK",
 	"Description": "Solana SDK for Unreal Engine 5",
@@ -8,7 +9,7 @@
 	"CreatedBy": "Bifrost Inc",
 	"CreatedByURL": "https://github.com/Bifrost-Technologies/Solana-Unreal-SDK",
 	"DocsURL": "https://github.com/Bifrost-Technologies/Solana-Unreal-SDK",
-	"MarketplaceURL": "",
+	"MarketplaceURL":"com.epicgames.launcher://ue/marketplace/product/097e0138d00f4c8289a1d6809e5a057c,
 	"SupportURL": "https://github.com/Bifrost-Technologies/Solana-Unreal-SDK",
 	"EnabledByDefault": true,
 	"CanContainContent": true,
@@ -27,11 +28,26 @@
 			]
 		},
 		{
+			"Name": "LinkStream",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Linux",
+				"Mac"
+			]
+		},
+		{
 			"Name": "SolanaGameTemplate",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
 				"Engine"
+			],
+			"WhitelistPlatforms": [
+				"Win64",
+				"Linux",
+				"Mac"
 			]
 		}
 	]

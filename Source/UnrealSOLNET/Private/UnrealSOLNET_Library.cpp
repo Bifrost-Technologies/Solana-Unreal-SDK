@@ -30,12 +30,7 @@ FManagedFunction::FManagedFunction() : Pointer() { }
 
 UUnrealSOLNETLibrary::UUnrealSOLNETLibrary(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) { }
 
-void UUnrealSOLNETLibrary::ExecuteManagedFunction(FManagedFunction ManagedFunction, UObject* Object = nullptr) {
-	if (UnrealSOLNET::Status == UnrealSOLNET::StatusType::Running && ManagedFunction.Pointer)
-		UnrealSOLNET::ManagedCommand(UnrealSOLNET::Command(ManagedFunction.Pointer, Object));
-}
-
-FManagedFunction UUnrealSOLNETLibrary::FindManagedFunction(FString Method, bool Optional, bool& Result) {
+void UUnrealSOLNETLibrary::ExecuteSDKFunction(FString Method, bool Optional, bool& Result, UObject* Object = nullptr) {
 	FManagedFunction managedFunction;
 
 	if (UnrealSOLNET::Status == UnrealSOLNET::StatusType::Running && !Method.IsEmpty())
@@ -43,7 +38,8 @@ FManagedFunction UUnrealSOLNETLibrary::FindManagedFunction(FString Method, bool 
 
 	Result = managedFunction.Pointer != nullptr;
 
-	return managedFunction;
+	if (UnrealSOLNET::Status == UnrealSOLNET::StatusType::Running && managedFunction.Pointer)
+		UnrealSOLNET::ManagedCommand(UnrealSOLNET::Command(managedFunction.Pointer, Object));
 }
 
 UUnrealSOLNETCharacter::UUnrealSOLNETCharacter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) { }

@@ -11,7 +11,7 @@ ASolanaGameTemplateGameModeBase::ASolanaGameTemplateGameModeBase()
 	//}
 }
 
- UFUNCTION(BlueprintCallable)
+ UFUNCTION(BlueprintCallable, Category = "Solana SDK Server")
  void ASolanaGameTemplateGameModeBase::LoginPlayer(FString username, FString password)
  {
 	 FHttpRequestRef Request = FHttpModule::Get().CreateRequest();
@@ -31,7 +31,7 @@ ASolanaGameTemplateGameModeBase::ASolanaGameTemplateGameModeBase()
 	 Request->ProcessRequest();
  }
 
- UFUNCTION(BlueprintCallable)
+ UFUNCTION(BlueprintCallable, Category = "Solana SDK Server")
  void ASolanaGameTemplateGameModeBase::RequestStorePurchase(FString usertoken, FString storeitemID)
  {
 	 FHttpRequestRef Request = FHttpModule::Get().CreateRequest();
@@ -51,7 +51,7 @@ ASolanaGameTemplateGameModeBase::ASolanaGameTemplateGameModeBase()
 	 Request->ProcessRequest();
  }
 
- UFUNCTION(BlueprintCallable)
+ UFUNCTION(BlueprintCallable, Category = "Solana SDK Server")
  void ASolanaGameTemplateGameModeBase::RequestRecyclerTransaction(FString usertoken, FString inventoryitemID)
  {
 	 FHttpRequestRef Request = FHttpModule::Get().CreateRequest();
@@ -71,7 +71,7 @@ ASolanaGameTemplateGameModeBase::ASolanaGameTemplateGameModeBase()
 	 Request->ProcessRequest();
  }
 
- UFUNCTION(BlueprintCallable)
+ UFUNCTION(BlueprintCallable, Category = "Solana SDK Server")
  void ASolanaGameTemplateGameModeBase::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bConnectedSuccessfull)
  {
 	 TSharedPtr<FJsonObject> ResponseObj;

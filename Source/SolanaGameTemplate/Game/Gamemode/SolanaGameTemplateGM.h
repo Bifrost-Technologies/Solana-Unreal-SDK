@@ -40,13 +40,13 @@ class SOLANAGAMETEMPLATE_API ASolanaGameTemplateGameModeBase : public AGameModeB
 public:
 	ASolanaGameTemplateGameModeBase();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category="Solana SDK Server")
 	void LoginPlayer(FString username, FString password);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Solana SDK Server")
 	void RequestStorePurchase(FString usertoken, FString storeitemID);
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Solana SDK Server")
 	void RequestRecyclerTransaction(FString usertoken, FString inventoryitemID);
 
 private:

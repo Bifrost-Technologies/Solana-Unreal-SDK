@@ -65,11 +65,11 @@ public class UnrealSOLNET : ModuleRules {
 			string runtimePath = null;
 
 			if (Target.Platform == UnrealTargetPlatform.Win64)
-				runtimePath = Path.Combine(ModuleDirectory, "../../Runtime/Win64");
+				runtimePath = Path.Combine(ModuleDirectory, "../../Source/ThirdParty/Runtime/Win64");
 			else if (Target.Platform == UnrealTargetPlatform.Linux)
-				runtimePath = Path.Combine(ModuleDirectory, "../../Runtime/Linux");
+				runtimePath = Path.Combine(ModuleDirectory, "../../Source/ThirdParty/Runtime/Linux");
 			else if (Target.Platform == UnrealTargetPlatform.Mac)
-				runtimePath = Path.Combine(ModuleDirectory, "../../Runtime/Mac");
+				runtimePath = Path.Combine(ModuleDirectory, "../../Source/ThirdParty/Runtime/Mac");
 			else
 				throw new Exception("Unknown platform");
 

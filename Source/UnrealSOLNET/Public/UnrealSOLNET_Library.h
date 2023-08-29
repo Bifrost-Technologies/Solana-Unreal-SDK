@@ -46,11 +46,9 @@ class UNREALSOLNET_API UUnrealSOLNETLibrary : public UBlueprintFunctionLibrary {
 
 	public:
 
-	UFUNCTION(BlueprintCallable, BlueprintPure = false, Category = ".NET", meta = (ToolTip = "Executes the managed function with optional object reference argument"))
-	static void ExecuteManagedFunction(FManagedFunction ManagedFunction, UObject* Object);
-
-	UFUNCTION(BlueprintCallable, BlueprintPure = false, Category = ".NET", meta = (ToolTip = "Finds the managed function from loaded assembly, optional parameter suppresses errors if the function was not found"))
-	static FManagedFunction FindManagedFunction(FString Method, bool Optional, bool& Result);
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure = false, Name="Execute SDK Function" Category = "Solana SDK", meta = (ToolTip = "Finds the Solana SDK method from Unreal SOLNET, optional parameter suppresses errors if the function was not found"))
+	static void ExecuteSDKFunction(FString Method, bool Optional, bool& Result, UObject* Object);
 };
 
 UCLASS()
