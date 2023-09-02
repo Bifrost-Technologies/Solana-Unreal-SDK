@@ -22,9 +22,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreLoadingScreen",
 			"WhitelistPlatforms": [
-				"Win64",
-				"Linux",
-				"Mac"
+				"Win64"
 			]
 		},
 		{
@@ -32,9 +30,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "PreLoadingScreen",
 			"WhitelistPlatforms": [
-				"Win64",
-				"Linux",
-				"Mac"
+				"Win64"
 			]
 		},
 		{
@@ -45,9 +41,7 @@
 				"Engine"
 			],
 			"WhitelistPlatforms": [
-				"Win64",
-				"Linux",
-				"Mac"
+				"Win64"
 			]
 		}
 	]

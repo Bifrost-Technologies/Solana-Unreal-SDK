@@ -29,7 +29,6 @@
 UNREALSOLNET_API DECLARE_LOG_CATEGORY_EXTERN(LogUnrealManaged, Log, All);
 
 namespace UnrealSOLNETFramework {
-	using AnimationMode = EAnimationMode::Type;
 	using AutoReceiveInput = EAutoReceiveInput::Type;
 	using CameraProjectionMode = ECameraProjectionMode::Type;
 	using CollisionMode = ECollisionEnabled::Type;
@@ -1148,7 +1147,6 @@ namespace UnrealSOLNETFramework {
 		static bool IsPlaying(USkeletalMeshComponent* SkeletalMeshComponent);
 		static UAnimInstance* GetAnimationInstance(USkeletalMeshComponent* SkeletalMeshComponent);
 		static void SetAnimation(USkeletalMeshComponent* SkeletalMeshComponent, UAnimationAsset* Asset);
-		static void SetAnimationMode(USkeletalMeshComponent* SkeletalMeshComponent, AnimationMode Mode);
 		static void SetAnimationBlueprint(USkeletalMeshComponent* SkeletalMeshComponent, UObject* Blueprint);
 		static void Play(USkeletalMeshComponent* SkeletalMeshComponent, bool Loop);
 		static void PlayAnimation(USkeletalMeshComponent* SkeletalMeshComponent, UAnimationAsset* Asset, bool Loop);

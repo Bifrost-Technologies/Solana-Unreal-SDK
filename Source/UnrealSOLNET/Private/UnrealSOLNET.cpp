@@ -618,25 +618,6 @@ void UnrealSOLNET::Module::StartupModule() {
 
 			{
 				int32 head = 0;
-				Shared::Functions[position++] = Shared::SoundBaseFunctions;
-
-				Shared::SoundBaseFunctions[head++] = (void*)&UnrealSOLNETFramework::SoundBase::GetDuration;
-
-				checksum += head;
-			}
-
-			{
-				int32 head = 0;
-				Shared::Functions[position++] = Shared::SoundWaveFunctions;
-
-				Shared::SoundWaveFunctions[head++] = (void*)&UnrealSOLNETFramework::SoundWave::GetLoop;
-				Shared::SoundWaveFunctions[head++] = (void*)&UnrealSOLNETFramework::SoundWave::SetLoop;
-
-				checksum += head;
-			}
-
-			{
-				int32 head = 0;
 				Shared::Functions[position++] = Shared::AnimationInstanceFunctions;
 
 				Shared::AnimationInstanceFunctions[head++] = (void*)&UnrealSOLNETFramework::AnimationInstance::GetCurrentActiveMontage;
@@ -1194,7 +1175,6 @@ void UnrealSOLNET::Module::StartupModule() {
 				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::IsPlaying;
 				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::GetAnimationInstance;
 				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::SetAnimation;
-				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::SetAnimationMode;
 				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::SetAnimationBlueprint;
 				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::Play;
 				Shared::SkeletalMeshComponentFunctions[head++] = (void*)&UnrealSOLNETFramework::SkeletalMeshComponent::PlayAnimation;

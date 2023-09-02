@@ -290,9 +290,9 @@ bool ALinkStreamConnection::isConnected(int32 ConnectionId)
 
 void ALinkStreamConnection::PrintToConsole(FString Str, bool Error)
 {
-	if (auto tcpSocketSettings = GetDefault<UTcpSocketSettings>())
+	if (auto LinkStreamSettings = GetDefault<ULinkStreamSettings>())
 	{
-		if (Error && tcpSocketSettings->bPostErrorsToMessageLog)
+		if (Error && LinkStreamSettings->bPostErrorsToMessageLog)
 		{
 			auto messageLog = FMessageLog("Tcp Socket Plugin");
 			messageLog.Open(EMessageSeverity::Error, true);

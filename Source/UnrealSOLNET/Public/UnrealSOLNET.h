@@ -33,7 +33,7 @@
 
 #include "AIController.h"
 #include "Animation/AnimInstance.h"
-#include "AssetRegistryModule.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/AudioComponent.h"
@@ -360,8 +360,6 @@ namespace UnrealSOLNET {
 		static void* PlayerControllerFunctions[storageSize];
 		static void* VolumeFunctions[storageSize];
 		static void* PostProcessVolumeFunctions[storageSize];
-		static void* SoundBaseFunctions[storageSize];
-		static void* SoundWaveFunctions[storageSize];
 		static void* AnimationInstanceFunctions[storageSize];
 		static void* PlayerFunctions[storageSize];
 		static void* PlayerInputFunctions[storageSize];

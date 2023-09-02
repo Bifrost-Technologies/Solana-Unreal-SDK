@@ -529,21 +529,6 @@ namespace UnrealSOLNETFramework {
 					break;
 				}
 
-				case ObjectType::SoundWave: {
-					object = StaticLoadObject(USoundWave::StaticClass(), nullptr, *FString(UTF8_TO_TCHAR(Name)));
-					break;
-				}
-
-				case ObjectType::AnimationSequence: {
-					object = StaticLoadObject(UAnimSequence::StaticClass(), nullptr, *FString(UTF8_TO_TCHAR(Name)));
-					break;
-				}
-
-				case ObjectType::AnimationMontage: {
-					object = StaticLoadObject(UAnimMontage::StaticClass(), nullptr, *FString(UTF8_TO_TCHAR(Name)));
-					break;
-				}
-
 				case ObjectType::StaticMesh: {
 					object = StaticLoadObject(UStaticMesh::StaticClass(), nullptr, *FString(UTF8_TO_TCHAR(Name)));
 					break;
@@ -2120,21 +2105,7 @@ namespace UnrealSOLNETFramework {
 		}
 	}
 
-	namespace SoundBase {
-		float GetDuration(USoundBase* SoundBase) {
-			return SoundBase->Duration;
-		}
-	}
-
-	namespace SoundWave {
-		bool GetLoop(USoundWave* SoundWave) {
-			return SoundWave->bLooping;
-		}
-
-		void SetLoop(USoundWave* SoundWave, bool Value) {
-			SoundWave->bLooping = Value;
-		}
-	}
+	
 
 	namespace AnimationInstance {
 		UAnimMontage* GetCurrentActiveMontage(UAnimInstance* AnimationInstance) {
@@ -3682,10 +3653,6 @@ namespace UnrealSOLNETFramework {
 
 		void SetAnimation(USkeletalMeshComponent* SkeletalMeshComponent, UAnimationAsset* Asset) {
 			SkeletalMeshComponent->SetAnimation(Asset);
-		}
-
-		void SetAnimationMode(USkeletalMeshComponent* SkeletalMeshComponent, AnimationMode Mode) {
-			SkeletalMeshComponent->SetAnimationMode(Mode);
 		}
 
 		void SetAnimationBlueprint(USkeletalMeshComponent* SkeletalMeshComponent, UObject* Blueprint) {

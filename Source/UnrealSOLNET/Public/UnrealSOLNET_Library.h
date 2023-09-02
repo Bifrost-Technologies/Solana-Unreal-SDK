@@ -47,7 +47,7 @@ class UNREALSOLNET_API UUnrealSOLNETLibrary : public UBlueprintFunctionLibrary {
 	public:
 
 	
-	UFUNCTION(BlueprintCallable, BlueprintPure = false, Name="Execute SDK Function" Category = "Solana SDK", meta = (ToolTip = "Finds the Solana SDK method from Unreal SOLNET, optional parameter suppresses errors if the function was not found"))
+	UFUNCTION(BlueprintCallable, BlueprintPure = false, Category = "Solana SDK", meta = (ToolTip = "Finds the Solana SDK method from Unreal SOLNET, optional parameter suppresses errors if the function was not found"))
 	static void ExecuteSDKFunction(FString Method, bool Optional, bool& Result, UObject* Object);
 };
 
