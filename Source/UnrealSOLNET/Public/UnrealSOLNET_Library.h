@@ -51,14 +51,3 @@ class UNREALSOLNET_API UUnrealSOLNETLibrary : public UBlueprintFunctionLibrary {
 	static void ExecuteSDKFunction(FString Method, bool Optional, bool& Result, UObject* Object);
 };
 
-UCLASS()
-class UNREALSOLNET_API UUnrealSOLNETCharacter : public UObject {
-	GENERATED_UCLASS_BODY()
-
-	public:
-
-	void* LandedCallback;
-
-	UFUNCTION()
-	void Landed(const FHitResult& Hit);
-};

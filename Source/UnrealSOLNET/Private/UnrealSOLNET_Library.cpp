@@ -42,14 +42,3 @@ void UUnrealSOLNETLibrary::ExecuteSDKFunction(FString Method, bool Optional, boo
 		UnrealSOLNET::ManagedCommand(UnrealSOLNET::Command(managedFunction.Pointer, Object));
 }
 
-UUnrealSOLNETCharacter::UUnrealSOLNETCharacter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) { }
-
-void UUnrealSOLNETCharacter::Landed(const FHitResult& Hit) {
-	UnrealSOLNETFramework::Hit hit(Hit);
-
-	void* parameters[1] = {
-		&hit
-	};
-
-	UnrealSOLNET::ManagedCommand(UnrealSOLNET::Command(LandedCallback, UnrealSOLNET::Callback(parameters, UnrealSOLNET::CallbackType::CharacterLandedDelegate)));
-}

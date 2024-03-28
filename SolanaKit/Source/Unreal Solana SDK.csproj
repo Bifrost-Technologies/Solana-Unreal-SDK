@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Framework\UnrealEngine.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Solnet.Extensions">
       <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Extensions.dll</HintPath>
     </Reference>
@@ -25,7 +29,8 @@
       <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.KeyStore.dll</HintPath>
     </Reference>
     <Reference Include="Solnet.Metaplex">
-      <HintPath>..\..\..\..\Production\Solnet.Metaplex\Solnet.Metaplex\bin\Release\net6.0\Solnet.Metaplex.dll</HintPath>
+      <HintPath>C:\Users\proje\source\repos\Production\Solnet.Metaplex\Solnet.Metaplex\bin\Release\net6.0\Solnet.Metaplex.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Solnet.Programs">
       <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Programs.dll</HintPath>
@@ -35,9 +40,6 @@
     </Reference>
     <Reference Include="Solnet.Wallet">
       <HintPath>D:\Unreal Projects\Frontiers\Managed\Solnet.Wallet.dll</HintPath>
-    </Reference>
-    <Reference Include="UnrealEngine.Framework">
-      <HintPath>D:\Unreal Projects\Frontiers\Managed\UnrealEngine.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
 

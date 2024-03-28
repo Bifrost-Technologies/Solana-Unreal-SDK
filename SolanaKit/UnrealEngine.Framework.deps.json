@@ -1,0 +1,34 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "UnrealEngine.Framework/1.0.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.NetAnalyzers": "6.0.0"
+        },
+        "runtime": {
+          "UnrealEngine.Framework.dll": {}
+        }
+      },
+      "Microsoft.CodeAnalysis.NetAnalyzers/6.0.0": {}
+    }
+  },
+  "libraries": {
+    "UnrealEngine.Framework/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.CodeAnalysis.NetAnalyzers/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cjG06LMeOADNUeCUaklOfVgrnVkLy80H5PVll4QHDUXv+C+6G9rHczrNdWjfb3xKv3Ts9s4UsP6J2ZWe52Gz4Q==",
+      "path": "microsoft.codeanalysis.netanalyzers/6.0.0",
+      "hashPath": "microsoft.codeanalysis.netanalyzers.6.0.0.nupkg.sha512"
+    }
+  }
+}

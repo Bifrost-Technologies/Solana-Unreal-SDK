@@ -31,62 +31,22 @@
 #include "../../Dependencies/CoreCLR/includes/hostfxr.h"
 // @third party code - END CoreCLR
 
-#include "AIController.h"
-#include "Animation/AnimInstance.h"
-#include "AssetRegistry/AssetRegistryModule.h"
-#include "Camera/CameraActor.h"
-#include "Camera/CameraComponent.h"
-#include "Components/AudioComponent.h"
-#include "Components/BoxComponent.h"
-#include "Components/CapsuleComponent.h"
-#include "Components/DirectionalLightComponent.h"
-#include "Components/HierarchicalInstancedStaticMeshComponent.h"
-#include "Components/InputComponent.h"
-#include "Components/LightComponent.h"
-#include "Components/LightComponentBase.h"
-#include "Components/PostProcessComponent.h"
-#include "Components/ShapeComponent.h"
-#include "Components/SphereComponent.h"
-#include "Components/SplineComponent.h"
-#include "Components/TextRenderComponent.h"
+
 #include "DrawDebugHelpers.h"
-#include "Engine/DirectionalLight.h"
-#include "Engine/Font.h"
+
 #include "Engine/GameEngine.h"
-#include "Engine/LevelScriptActor.h"
-#include "Engine/Light.h"
-#include "Engine/Player.h"
-#include "Engine/PointLight.h"
-#include "Engine/PostProcessVolume.h"
-#include "Engine/RectLight.h"
-#include "Engine/SpotLight.h"
-#include "Engine/TriggerBox.h"
-#include "Engine/TriggerCapsule.h"
-#include "Engine/TriggerSphere.h"
-#include "Engine/TriggerVolume.h"
+#include "Engine/World.h"
 #include "EngineUtils.h"
-#include "GameFramework/Actor.h"
-#include "GameFramework/Character.h"
-#include "GameFramework/GameModeBase.h"
-#include "GameFramework/PlayerController.h"
-#include "GameFramework/PlayerInput.h"
-#include "GameFramework/RotatingMovementComponent.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "HeadMountedDisplayFunctionLibrary.h"
-#include "IAssetRegistry.h"
-#include "ImageUtils.h"
-#include "Materials/MaterialInstanceDynamic.h"
+#include "Misc/CommandLine.h"
 #include "Misc/DefaultValueHelper.h"
 #include "Misc/OutputDeviceNull.h"
 #include "Modules/ModuleManager.h"
-#include "MotionControllerComponent.h"
+
 #include "PhysicsEngine/RadialForceComponent.h"
-#include "Sound/AmbientSound.h"
 #include "UnrealEngine.h"
 
 #include "UnrealSOLNET_Framework.h"
 #include "UnrealSOLNET_Library.h"
-#include "UnrealSOLNET_Manager.h"
 
 #if WITH_EDITOR
 	#include "Editor.h"
@@ -129,15 +89,7 @@ namespace UnrealSOLNET {
 	};
 
 	enum struct CallbackType : int32 {
-		ActorOverlapDelegate,
-		ActorHitDelegate,
-		ActorCursorDelegate,
-		ActorKeyDelegate,
-		ComponentOverlapDelegate,
-		ComponentHitDelegate,
-		ComponentCursorDelegate,
-		ComponentKeyDelegate,
-		CharacterLandedDelegate
+		None,
 	};
 
 	enum struct ArgumentType : int32 {
@@ -163,21 +115,8 @@ namespace UnrealSOLNET {
 		OnWorldDuringPhysicsTick,
 		OnWorldPostPhysicsTick,
 		OnWorldPostUpdateTick,
-		OnWorldEnd,
-		OnActorBeginOverlap,
-		OnActorEndOverlap,
-		OnActorHit,
-		OnActorBeginCursorOver,
-		OnActorEndCursorOver,
-		OnActorClicked,
-		OnActorReleased,
-		OnComponentBeginOverlap,
-		OnComponentEndOverlap,
-		OnComponentHit,
-		OnComponentBeginCursorOver,
-		OnComponentEndCursorOver,
-		OnComponentClicked,
-		OnComponentReleased
+		OnWorldEnd
+		
 	};
 
 	struct Callback {
@@ -326,7 +265,6 @@ namespace UnrealSOLNET {
 	};
 
 	namespace Engine {
-		static UUnrealSOLNETManager* Manager;
 		static UWorld* World;
 	}
 
@@ -334,69 +272,10 @@ namespace UnrealSOLNET {
 		static constexpr int32 storageSize = 128;
 
 		// Non-instantiable
-
 		static void* AssertFunctions[storageSize];
-		static void* CommandLineFunctions[storageSize];
 		static void* DebugFunctions[storageSize];
 		static void* ObjectFunctions[storageSize];
-		static void* ApplicationFunctions[storageSize];
-		static void* ConsoleManagerFunctions[storageSize];
-		static void* EngineFunctions[storageSize];
-		static void* WorldFunctions[storageSize];
 
-		// Instantiable
-
-		static void* AssetFunctions[storageSize];
-		static void* AssetRegistryFunctions[storageSize];
-		static void* BlueprintFunctions[storageSize];
-		static void* ConsoleObjectFunctions[storageSize];
-		static void* ConsoleVariableFunctions[storageSize];
-		static void* ActorFunctions[storageSize];
-		static void* GameModeBaseFunctions[storageSize];
-		static void* PawnFunctions[storageSize];
-		static void* CharacterFunctions[storageSize];
-		static void* ControllerFunctions[storageSize];
-		static void* AIControllerFunctions[storageSize];
-		static void* PlayerControllerFunctions[storageSize];
-		static void* VolumeFunctions[storageSize];
-		static void* PostProcessVolumeFunctions[storageSize];
-		static void* AnimationInstanceFunctions[storageSize];
-		static void* PlayerFunctions[storageSize];
-		static void* PlayerInputFunctions[storageSize];
-		static void* FontFunctions[storageSize];
-		static void* Texture2DFunctions[storageSize];
-		static void* ActorComponentFunctions[storageSize];
-		static void* InputComponentFunctions[storageSize];
-		static void* MovementComponentFunctions[storageSize];
-		static void* RotatingMovementComponentFunctions[storageSize];
-		static void* SceneComponentFunctions[storageSize];
-		static void* AudioComponentFunctions[storageSize];
-		static void* CameraComponentFunctions[storageSize];
-		static void* ChildActorComponentFunctions[storageSize];
-		static void* SpringArmComponentFunctions[storageSize];
-		static void* PostProcessComponentFunctions[storageSize];
-		static void* PrimitiveComponentFunctions[storageSize];
-		static void* ShapeComponentFunctions[storageSize];
-		static void* BoxComponentFunctions[storageSize];
-		static void* SphereComponentFunctions[storageSize];
-		static void* CapsuleComponentFunctions[storageSize];
-		static void* MeshComponentFunctions[storageSize];
-		static void* TextRenderComponentFunctions[storageSize];
-		static void* LightComponentBaseFunctions[storageSize];
-		static void* LightComponentFunctions[storageSize];
-		static void* MotionControllerComponentFunctions[storageSize];
-		static void* StaticMeshComponentFunctions[storageSize];
-		static void* InstancedStaticMeshComponentFunctions[storageSize];
-		static void* HierarchicalInstancedStaticMeshComponentFunctions[storageSize];
-		static void* SkinnedMeshComponentFunctions[storageSize];
-		static void* SkeletalMeshComponentFunctions[storageSize];
-		static void* SplineComponentFunctions[storageSize];
-		static void* RadialForceComponentFunctions[storageSize];
-		static void* MaterialInterfaceFunctions[storageSize];
-		static void* MaterialFunctions[storageSize];
-		static void* MaterialInstanceFunctions[storageSize];
-		static void* MaterialInstanceDynamicFunctions[storageSize];
-		static void* HeadMountedDisplayFunctions[storageSize];
 
 		static void* RuntimeFunctions[2];
 		static void* Events[128];

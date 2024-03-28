@@ -45,15 +45,14 @@ public class UnrealSOLNET : ModuleRules {
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {
-			"AIModule",
-			"AssetRegistry",
-			"CoreUObject",
+            "AIModule",
+            "AssetRegistry",
+            "CoreUObject",
 			"Engine",
-			"HeadMountedDisplay",
 			"InputCore",
-			"Slate",
-			"SlateCore"
-		});
+            "Slate",
+            "SlateCore"
+        });
 
 		DynamicallyLoadedModuleNames.AddRange(new string[] { });
 

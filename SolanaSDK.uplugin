@@ -32,17 +32,7 @@
 			"WhitelistPlatforms": [
 				"Win64"
 			]
-		},
-		{
-			"Name": "SolanaGameTemplate",
-			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"AdditionalDependencies": [
-				"Engine"
-			],
-			"WhitelistPlatforms": [
-				"Win64"
-			]
 		}
+		
 	]
 }
