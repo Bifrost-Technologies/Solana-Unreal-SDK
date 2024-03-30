@@ -51,13 +51,13 @@ void UnrealSOLNET::Module::StartupModule() {
 
 	UnrealSOLNET::Status = UnrealSOLNET::StatusType::Stopped;
 	UnrealSOLNET::ProjectPath = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir());
-	UnrealSOLNET::UserAssembliesPath = UnrealSOLNET::ProjectPath + TEXT("Plugins/Solana SDK/SolanaKit/");
+	UnrealSOLNET::UserAssembliesPath = UnrealSOLNET::ProjectPath + TEXT("Plugins/Solana SDK/Source/ThirdParty/Managed/");
 
 	OnWorldPostInitializationHandle = FWorldDelegates::OnPostWorldInitialization.AddRaw(this, &UnrealSOLNET::Module::OnWorldPostInitialization);
 	OnWorldCleanupHandle = FWorldDelegates::OnWorldCleanup.AddRaw(this, &UnrealSOLNET::Module::OnWorldCleanup);
 
 	const FString hostfxrPath = UnrealSOLNET::ProjectPath + TEXT(HOSTFXR_PATH);
-	const FString assembliesPath = UnrealSOLNET::ProjectPath + TEXT("Plugins/Solana SDK/Managed/");
+	const FString assembliesPath = UnrealSOLNET::ProjectPath + TEXT("Plugins/Solana SDK/Source/ThirdParty/PluginRuntime/");
 	const FString runtimeConfigPath = assembliesPath + TEXT("UnrealEngine.Runtime.runtimeconfig.json");
 	const FString runtimeAssemblyPath = assembliesPath + TEXT("UnrealEngine.Runtime.dll");
 	const FString runtimeTypeName = TEXT("UnrealEngine.Runtime.Core, UnrealEngine.Runtime");

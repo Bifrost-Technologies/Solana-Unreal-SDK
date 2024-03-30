@@ -1,6 +1,6 @@
 /*
  *  UnrealSOLNET
- *  Copyright (c) 2023 Bifrost Inc.
+ *  Copyright (c) 2024 Bifrost Inc.
  *  Author: Nathan Martell
  *  Forked from: Stanislav Denisov's UnrealCLR
  *

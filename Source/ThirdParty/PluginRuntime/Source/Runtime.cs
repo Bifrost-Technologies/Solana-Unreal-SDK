@@ -1,6 +1,8 @@
 /*
- *  Unreal Engine .NET 6 integration 
- *  Copyright (c) 2021 Stanislav Denisov
+ *  Unreal Engine .NET 6 Integration
+ *  Copyright (c) 2024 Bifrost Inc.
+ *  Author: Nathan Martell
+ *  Forked from: Stanislav Denisov's UnrealCLR
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -245,7 +247,7 @@ namespace UnrealEngine.Runtime {
 				try {
 					const string frameworkAssemblyName = "UnrealEngine.Framework";
 					string assemblyPath = Assembly.GetExecutingAssembly().Location;
-					string managedFolder = assemblyPath.Substring(0, assemblyPath.IndexOf("Plugins", StringComparison.Ordinal)) + @"Plugins\Solana SDK\SolanaKit";
+					string managedFolder = assemblyPath.Substring(0, assemblyPath.IndexOf("Plugins", StringComparison.Ordinal)) + @"Plugins\Solana SDK\Source\ThirdParty\Managed";
 					string[] folders = Directory.GetDirectories(managedFolder);
                     Log(LogLevel.Display, "Framework loaded succesfuly for " + managedFolder);
                     Array.Resize(ref folders, folders.Length + 1);

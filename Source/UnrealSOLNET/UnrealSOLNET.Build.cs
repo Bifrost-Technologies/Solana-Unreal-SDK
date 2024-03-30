@@ -1,6 +1,6 @@
 /*
  *  UnrealSOLNET
- *  Copyright (c) 2023 Bifrost Inc.
+ *  Copyright (c) 2024 Bifrost Inc.
  *  Author: Nathan Martell
  *  Forked from: Stanislav Denisov's UnrealCLR
  *
@@ -78,7 +78,7 @@ public class UnrealSOLNET : ModuleRules {
 				RuntimeDependencies.Add(file);
 			}
 
-			files = Directory.GetFiles(Path.Combine(ModuleDirectory, "../../Managed"), "*.*", SearchOption.AllDirectories);
+			files = Directory.GetFiles(Path.Combine(ModuleDirectory, "../../Source/ThirdParty/PluginRuntime"), "*.*", SearchOption.AllDirectories);
 
 			foreach (string file in files) {
 				RuntimeDependencies.Add(file);
